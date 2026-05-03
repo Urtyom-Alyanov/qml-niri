@@ -9,6 +9,8 @@ ApplicationWindow {
     height: 400
     title: "Niri Workspaces Test"
 
+    property string outputName
+
     Niri {
         id: niri
         Component.onCompleted: connect()
@@ -30,6 +32,18 @@ ApplicationWindow {
             statusText.text = "Error: " + error
             statusText.color = "red"
         }
+    }
+
+    SortFilterProxyModel {
+        id: workspacesProxy
+        model: niri.workspaces
+        filters: [
+            ValueFilter {
+                roleName: "output"
+                value: outputName
+                enabled: outputName !== "" // show all when empty
+            }
+        ]
     }
 
     ColumnLayout {
@@ -60,6 +74,23 @@ ApplicationWindow {
             color: "#CCC"
         }
 
+        RowLayout {
+            Layout.fillWidth: true
+            spacing: 10
+
+            Text {
+                text: "Output filter:"
+                font.bold: true
+            }
+
+            TextField {
+                text: outputName
+                placeholderText: "e.g. eDP-1"
+                Layout.fillWidth: true
+                onTextChanged: outputName = text
+            }
+        }
+
         Text {
             text: "Click on a workspace to switch to it"
             font.pixelSize: 10
@@ -72,7 +103,7 @@ ApplicationWindow {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            model: niri.workspaces
+            model: workspacesProxy
             spacing: 5
             clip: true
 

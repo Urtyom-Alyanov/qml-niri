@@ -216,8 +216,16 @@ ApplicationWindow {
                     }
 
                     Text {
-                        text: "ID: " + model.id + " | Workspace: " +
-                              (model.workspaceId || "none")
+                        text: [
+                            `ID: ${model.id}`,
+                            `Workspace: ${model.workspaceId || "none"}`,
+                            `Size: ${model.windowWidth}x${model.windowHeight}`,
+                            `Column index: ${model.columnIndex}`,
+                            `Tile index: ${model.tileIndex}`,
+                            `Tile size: ${model.tileWidth}x${model.tileHeight}`,
+                            `Offset in tile: ${model.windowOffsetX},${model.windowOffsetY}`,
+                            `Tile position: ${model.tilePosX},${model.tilePosY}`
+                        ].join(" | ")
                         font.pixelSize: 10
                         color: model.isFocused ? "white" : "#888"
                     }

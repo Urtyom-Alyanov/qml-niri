@@ -183,10 +183,14 @@ void WindowModel::handleWindowOpenedOrChanged(const QJsonObject &windowObj)
     bool focusMayHaveChanged = false;
 
     if (idx == -1) {
-        // New window.
+        // New window: insert at the position that keeps m_windows sorted by id.
         window = parseWindow(windowObj);
-        beginInsertRows(QModelIndex(), m_windows.count(), m_windows.count());
-        m_windows.append(window);
+        const auto it = std::lower_bound(
+            m_windows.begin(), m_windows.end(), window->id,
+            [](const Window *w, quint64 id) { return w->id < id; });
+        const int insertAt = static_cast<int>(it - m_windows.begin());
+        beginInsertRows(QModelIndex(), insertAt, insertAt);
+        m_windows.insert(it, window);
         endInsertRows();
         emit countChanged();
         focusMayHaveChanged = window->isFocused;

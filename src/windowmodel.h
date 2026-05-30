@@ -18,16 +18,16 @@ class Window : public QObject
     Q_PROPERTY(bool isFocused MEMBER isFocused CONSTANT)
     Q_PROPERTY(bool isFloating MEMBER isFloating CONSTANT)
     Q_PROPERTY(bool isUrgent MEMBER isUrgent CONSTANT)
-    Q_PROPERTY(qint32 columnIndex MEMBER columnIndex CONSTANT)
-    Q_PROPERTY(qint32 tileIndex MEMBER tileIndex CONSTANT)
-    Q_PROPERTY(qreal tileWidth MEMBER tileWidth CONSTANT)
-    Q_PROPERTY(qreal tileHeight MEMBER tileHeight CONSTANT)
-    Q_PROPERTY(qint32 windowWidth MEMBER windowWidth CONSTANT)
-    Q_PROPERTY(qint32 windowHeight MEMBER windowHeight CONSTANT)
-    Q_PROPERTY(qreal tilePosX MEMBER tilePosX CONSTANT)
-    Q_PROPERTY(qreal tilePosY MEMBER tilePosY CONSTANT)
-    Q_PROPERTY(qreal windowOffsetX MEMBER windowOffsetX CONSTANT)
-    Q_PROPERTY(qreal windowOffsetY MEMBER windowOffsetY CONSTANT)
+    Q_PROPERTY(qint32 columnIndex MEMBER columnIndex NOTIFY layoutChanged)
+    Q_PROPERTY(qint32 tileIndex MEMBER tileIndex NOTIFY layoutChanged)
+    Q_PROPERTY(qreal tileWidth MEMBER tileWidth NOTIFY layoutChanged)
+    Q_PROPERTY(qreal tileHeight MEMBER tileHeight NOTIFY layoutChanged)
+    Q_PROPERTY(qint32 windowWidth MEMBER windowWidth NOTIFY layoutChanged)
+    Q_PROPERTY(qint32 windowHeight MEMBER windowHeight NOTIFY layoutChanged)
+    Q_PROPERTY(qreal tilePosX MEMBER tilePosX NOTIFY layoutChanged)
+    Q_PROPERTY(qreal tilePosY MEMBER tilePosY NOTIFY layoutChanged)
+    Q_PROPERTY(qreal windowOffsetX MEMBER windowOffsetX NOTIFY layoutChanged)
+    Q_PROPERTY(qreal windowOffsetY MEMBER windowOffsetY NOTIFY layoutChanged)
     Q_PROPERTY(QString iconPath MEMBER iconPath CONSTANT)
 
 public:
@@ -60,6 +60,9 @@ public:
     qreal windowOffsetX;
     qreal windowOffsetY;
     QString iconPath;
+
+signals:
+    void layoutChanged();
 };
 
 class WindowModel : public QAbstractListModel

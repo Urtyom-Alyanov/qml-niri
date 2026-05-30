@@ -275,6 +275,7 @@ void WindowModel::handleWindowLayoutsChanged(const QJsonArray &changes)
         parseWindowLayout(m_windows[idx], layoutObj);
         const QModelIndex modelIdx = index(idx);
         emit dataChanged(modelIdx, modelIdx, layoutRoles);
+        emit m_windows[idx]->layoutChanged();
     }
 }
 

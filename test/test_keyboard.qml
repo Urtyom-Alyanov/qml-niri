@@ -1,30 +1,34 @@
 import QtQuick
 import Niri
 
-Niri {
-  id: niri
+import QtQuick
+import Niri
 
-  Component.onCompleted: connect()
+Item {
+  id: root
 
-  onConnected: console.log("succefully connected to niri")
-  onErrorOccured: function(error)
-  {
-    console.error("error: ", error)
+  Niri {
+    id: niri
+
+    Component.onCompleted: connect()
+
+    onConnected: console.log("succefully connected to niri")
+    onErrorOccurred: function(error) {
+      console.error("error: ", error)
+    }
   }
 
-  property val xkb: niri.keyboardLayouts
+  property var xkb: niri.keyboardLayouts
 
   Connections {
     target: niri.keyboardLayouts
 
-    function onNamesChanged()
-    {
+    function onNamesChanged() {
       console.log("names:", JSON.stringify(niri.keyboardLayouts.names));
     }
 
-    function onCurrentIndexChanged()
-    {
-      console.log("idx changed": niri.keyboardLayouts.currentIndex, "(", niri.keyboardLayouts.currentName, ")")
+    function onCurrentIndexChanged() {
+      console.log("idx changed:", niri.keyboardLayouts.currentIndex, "(", niri.keyboardLayouts.currentName, ")");
     }
   }
 

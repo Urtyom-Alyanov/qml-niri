@@ -2,7 +2,6 @@
 #include "logging.h"
 #include <QJsonArray>
 #include <QJsonValue>
-#include <qhashfunctions.h>
 #include <qjsonobject.h>
 #include <qloggingcategory.h>
 #include <qobject.h>

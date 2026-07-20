@@ -68,6 +68,17 @@ ApplicationWindow {
       status.color = "red";
       console.warn("disconnected from niri");
     }
+
+    keyboardLayouts.onNamesChanged: {
+      console.log("(names chng) names", niri.keyboardLayouts.names);
+      console.log("(names chng) currentIndex", niti.keyboardLayouts.currentIndex);
+      console.log("(names chng) currentName", niri.keyboardLayouts.currentName);
+    }
+
+    keyboardLayouts.onCurrentIndexChanged: {
+      console.log("(idx chng) currentName", niri.keyboardLayouts.currentName);
+      console.log("(idx chng) currentIndex", niri.keyboardLayouts.currentIndex)
+    }
   }
 
   ColumnLayout {
@@ -109,6 +120,73 @@ ApplicationWindow {
       }
     }
 
+ RowLayout {
+      Layout.fillWidth: true
+
+      ListView {
+        Layout.fillWidth: true
+        Layout.preferredHeight: 60
+        model: niri.keyboardLayouts ? niri.keyboardLayouts.names : [] // QStringList
+        orientation: ListView.Horizontal
+
+        spacing: 5
+        clip: true
+
+        delegate: Rectangle {
+          readonly property var isFocused: index === niri.keyboardLayouts.currentIndex
+
+          height: ListView.view.height
+          width: 100
+
+          color: isFocused ? "#4CAF50" : "#F5F5F5";
+          radius: 5
+
+          MouseArea {
+            anchors.fill: parent
+            acceptedButtons: Qt.LeftButton
+            cursorShape: Qt.PointingHandCursor
+            hoverEnabled: true
+
+            onEntered: {
+              parent.opacity = 0.8
+            }
+
+            onExited: {
+              parent.opacity = 1.0
+            }
+
+            onClicked: function(mouse) {
+              if (mouse.button === Qt.LeftButton) {
+                const r = niri.switchLayoutByIndex(index);
+              lastActionResult = r.ok ? "" : r.error;
+            }
+          }
+        }
+
+        ColumnLayout {
+          anchors.fill: parent
+          anchors.margins: 8
+          spacing: 5
+
+          Text {
+            text: modelData
+            font.bold: isFocused
+            font.pixelSize: 14
+            color: isFocused ? "white" : "black"
+          }
+
+          Text {
+            text: "● CURRENT"
+            font.bold: true
+            color: "white"
+            visible: isFocused
+          }
+        }
+      }
+    }
+    }
+
+    
     RowLayout {
       Layout.fillWidth: true
       
@@ -121,10 +199,6 @@ ApplicationWindow {
       RowLayout {
         spacing: 10
         layoutDirection: Qt.RightToLeft
-        anchors {
-          right: parent.right
-          verticalCenter: parent.verticalCenter
-        }
 
         Button {
           text: "Switch next"
@@ -150,3 +224,4 @@ ApplicationWindow {
     }
   }
 }
+

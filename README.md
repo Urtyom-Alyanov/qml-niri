@@ -10,6 +10,7 @@ A QML plugin for interacting with the [niri](https://github.com/niri-wm/niri) Wa
 - Application icon lookup via XDG desktop entries
 - Event-driven updates for all compositor changes
 - Native QML integration with Qt 6
+- Tracking keyboard layout
 
 
 ## Requirements

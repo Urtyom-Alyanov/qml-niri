@@ -23,8 +23,8 @@ void KeyboardLayouts::handleEvent(const QJsonObject &event) {
                            .toObject()["keyboard_layouts"]
                            .toObject();
     handleLayoutsChanged(data);
-  } else if (event.contains("KeyboardLayoutsSwitched")) {
-    QJsonObject data = event["KeyboardLayoutsSwitched"].toObject();
+  } else if (event.contains("KeyboardLayoutSwitched")) {
+    QJsonObject data = event["KeyboardLayoutSwitched"].toObject();
     handleLayoutSwitched(data["idx"].toInt());
   }
 }
@@ -45,6 +45,7 @@ void KeyboardLayouts::handleLayoutsChanged(const QJsonObject &data) {
     m_names = names;
     emit namesChanged();
   }
+
   if (!idxEqual) {
     m_currentIndex = idx;
     emit currentIndexChanged();

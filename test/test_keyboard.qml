@@ -71,7 +71,7 @@ ApplicationWindow {
 
     keyboardLayouts.onNamesChanged: {
       console.log("(names chng) names", niri.keyboardLayouts.names);
-      console.log("(names chng) currentIndex", niti.keyboardLayouts.currentIndex);
+      console.log("(names chng) currentIndex", niri.keyboardLayouts.currentIndex);
       console.log("(names chng) currentName", niri.keyboardLayouts.currentName);
     }
 

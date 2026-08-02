@@ -1,5 +1,6 @@
 #include "keyboardlayouts.h"
 #include "logging.h"
+#include <QJsonArray>
 
 KeyboardLayouts::KeyboardLayouts(QObject *parent)
     : QObject(parent)

@@ -117,7 +117,7 @@ ApplicationWindow {
 
             onClicked: function(mouse) {
               if (mouse.button === Qt.LeftButton) {
-                const r = niri.switchLayoutByIndex(index);
+                const r = niri.switchKeyboardLayoutByIndex(index);
               lastActionResult = r.ok ? "" : r.error;
             }
           }
@@ -163,7 +163,7 @@ ApplicationWindow {
         Button {
           text: "Switch next"
           onClicked: {
-            const r = niri.switchLayoutNext();
+            const r = niri.switchKeyboardLayoutNext();
             lastActionResult = r.ok ? "" : r.error;
           }
         }
@@ -171,7 +171,7 @@ ApplicationWindow {
         Button {
           text: "Switch prev"
           onClicked: {
-            const r = niri.switchLayoutPrev();
+            const r = niri.switchKeyboardLayoutPrev();
             lastActionResult = r.ok ? "" : r.error;
           }
         }

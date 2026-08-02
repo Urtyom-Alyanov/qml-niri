@@ -498,9 +498,9 @@ The main object. Connect to niri and issue actions through it.
 - `closeWindowOrFocused(id = 0)`: object - Close the given window, or the focused window if `id` is `0` (the default)
 - `toggleOverview()`: object - Show or hide the workspace overview
 - `sendRawAction(action)`: object - Send an arbitrary niri Action
-- `switchLayoutNext()`: object - Switching to the next configured keyboard layout
-- `switchLayoutPrev()`: object - Switching to the previous configured keyboard layout
-- `switchLayoutByIndex(index)`: object - Switching to a specific keyboard layout
+- `switchKeyboardLayoutPrev()`: object - Switching to the next configured keyboard layout
+- `switchKeyboardLayoutPrev()`: object - Switching to the previous configured keyboard layout
+- `switchKeyboardLayoutByIndex(index)`: object - Switching to a specific keyboard layout
 
 
 All action methods (everything except `connect()` and `isConnected()`) return a result object of the form `{ ok: bool, error?: string }`. See [Action results and error handling](#action-results-and-error-handling).

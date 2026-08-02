@@ -163,11 +163,6 @@ QVariantMap Niri::sendRawAction(const QVariantMap &action)
     return sendAction(QJsonObject::fromVariantMap(action));
 }
 
-KeyboardLayouts *Niri::keyboardLayouts() const
-{
-    return m_keyboardLayouts;
-}
-
 QVariantMap Niri::switchKeyboardLayoutNext()
 {
     QJsonObject action;

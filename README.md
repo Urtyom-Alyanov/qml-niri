@@ -627,8 +627,6 @@ Tracks at current compositor's state of keyboard layout and which one is active.
 - `namesChanged()` - Emitted when the list of configured layouts changed
 - `currentIndexChanged()` - Emitted when the active layout changes (also when `names` changes, since `currentName` depends on both)
 
-## License
-
 ## Troubleshooting
 
 - `module "Niri" is not installed`:
@@ -644,5 +642,6 @@ Tracks at current compositor's state of keyboard layout and which one is active.
   Ensure niri is actually running. 😄
   Otherwise, verify that the `NIRI_SOCKET` environment variable is set and points to a valid socket. It should be something like `/run/user/<name>/niri.wayland-1.1856.sock`. Note that this is affected by the value of `XDG_RUNTIME_DIR`.
 
+## License
 
 [MIT](/LICENSE)

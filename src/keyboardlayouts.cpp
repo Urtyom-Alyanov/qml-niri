@@ -8,7 +8,7 @@
 
 KeyboardLayouts::KeyboardLayouts(QObject *parent) : QObject(parent) {}
 
-/// Get name of locale
+// Get name of the currently active keyboard layout. 
 QString KeyboardLayouts::currentName() const {
   if (m_currentIndex < 0 || m_currentIndex >= m_names.count())
     return QString();

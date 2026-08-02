@@ -14,7 +14,7 @@ QString KeyboardLayouts::currentName() const
     return m_names.at(m_currentIndex);
 }
 
-/// Changing (mb from compositor on config change) or switching handler
+// Changing (mb from compositor on config change) or switching handler
 void KeyboardLayouts::handleEvent(const QJsonObject &event)
 {
     if (event.contains("KeyboardLayoutsChanged")) {
@@ -28,7 +28,7 @@ void KeyboardLayouts::handleEvent(const QJsonObject &event)
     }
 }
 
-/// On xkb config change
+// On xkb config change
 void KeyboardLayouts::handleLayoutsChanged(const QJsonObject &data)
 {
     QStringList names;
@@ -54,7 +54,7 @@ void KeyboardLayouts::handleLayoutsChanged(const QJsonObject &data)
     }
 }
 
-/// On user switching
+// On user switching
 void KeyboardLayouts::handleLayoutSwitched(int idx)
 {
     if (idx == m_currentIndex)

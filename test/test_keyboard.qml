@@ -93,12 +93,12 @@ ApplicationWindow {
         clip: true
 
         delegate: Rectangle {
-          readonly property var isFocused: index === niri.keyboardLayouts.currentIndex
+          readonly property var isCurrent: index === niri.keyboardLayouts.currentIndex
 
           height: ListView.view.height
           width: 100
 
-          color: isFocused ? "#4CAF50" : "#F5F5F5";
+          color: isCurrent ? "#4CAF50" : "#F5F5F5";
           radius: 5
 
           MouseArea {
@@ -130,16 +130,16 @@ ApplicationWindow {
 
           Text {
             text: modelData
-            font.bold: isFocused
+            font.bold: isCurrent
             font.pixelSize: 14
-            color: isFocused ? "white" : "black"
+            color: isCurrent ? "white" : "black"
           }
 
           Text {
             text: "● CURRENT"
             font.bold: true
             color: "white"
-            visible: isFocused
+            visible: isCurrent
           }
         }
       }

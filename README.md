@@ -500,7 +500,7 @@ The main object. Connect to niri and issue actions through it.
 - `sendRawAction(action)`: object - Send an arbitrary niri Action
 - `switchLayoutNext()`: object - Switching to the next configured keyboard layout
 - `switchLayoutPrev()`: object - Switching to the previous configured keyboard layout
-- `switchLayoutByIndex()`: object - Switching to a specific keyboard layout
+- `switchLayoutByIndex(index)`: object - Switching to a specific keyboard layout
 
 
 All action methods (everything except `connect()` and `isConnected()`) return a result object of the form `{ ok: bool, error?: string }`. See [Action results and error handling](#action-results-and-error-handling).

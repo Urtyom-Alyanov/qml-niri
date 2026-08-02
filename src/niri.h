@@ -15,6 +15,7 @@ class Niri : public QObject
     Q_PROPERTY(WorkspaceModel* workspaces READ workspaces CONSTANT)
     Q_PROPERTY(WindowModel* windows READ windows CONSTANT)
     Q_PROPERTY(Window* focusedWindow READ focusedWindow NOTIFY focusedWindowChanged)
+    Q_PROPERTY(KeyboardLayouts* keyboardLayouts READ keyboardLayouts CONSTANT)
 
 public:
     explicit Niri(QObject *parent = nullptr);
@@ -50,6 +51,7 @@ public:
 
     Q_INVOKABLE QVariantMap toggleOverview();
 
+    // Keyboard layout switching methods.
     Q_INVOKABLE QVariantMap switchKeyboardLayoutPrev();
     Q_INVOKABLE QVariantMap switchKeyboardLayoutNext();
     Q_INVOKABLE QVariantMap switchKeyboardLayoutByIndex(int index);

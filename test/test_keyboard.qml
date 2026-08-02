@@ -3,46 +3,6 @@ import Niri
 import QtQuick.Controls
 import QtQuick.Layouts
 
-// Item {
-//   id: root
-//
-//   Niri {
-//     id: niri
-//
-//     Component.onCompleted: connect()
-//
-//     // onConnected: console.log("succefully connected to niri")
-//     onErrorOccurred: function(error) {
-//       console.log("error: ", error)
-//     }
-//     onDisconnected: console.warn("disconnected from socket")
-//   }
-//
-//   property var xkb: niri.keyboardLayouts
-//
-//   Connections {
-//     target: niri.keyboardLayouts
-//
-//     function onNamesChanged() {
-//       console.log("names:", JSON.stringify(niri.keyboardLayouts.names));
-//     }
-//
-//     function onCurrentIndexChanged() {
-//       console.log("idx changed:", niri.keyboardLayouts.currentIndex, "(", niri.keyboardLayouts.currentName, ")");
-//     }
-//   }
-//
-//   Timer {
-//     interval: 2000
-//     running: true
-//     onTriggered: {
-//       const result = niri.switchLayoutNext();
-//       if (!result.ok)
-//         console.log("switchLayoutNext failed: ", result.error)
-//     }
-//   }
-// }
-
 ApplicationWindow {
   visible: true
   title: "Niri xkb test"

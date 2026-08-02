@@ -61,9 +61,12 @@ void KeyboardLayouts::handleLayoutSwitched(int idx)
         return;
 
     if (idx < 0 || idx >= m_names.count())
+    {
         qCWarning(niriLog)
             << "KeyboardLayoutSwitched: index out of names range, index:" << idx
             << "(have" << m_names.count() << "layout names)";
+        return;
+    }
 
     m_currentIndex = idx;
     emit currentIndexChanged();
